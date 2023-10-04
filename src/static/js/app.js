@@ -53,7 +53,7 @@ function TodoListCard() {
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
             {items.length === 0 && (
-                <p className="text-center">No items yet! Add one above!</p>
+                <p className="text-center">You have no todo items yet! Add one above!</p>
             )}
             {items.map(item => (
                 <ItemDisplay
@@ -75,6 +75,11 @@ function AddItemForm({ onNewItem }) {
 
     const submitNewItem = e => {
         e.preventDefault();
+	
+	// Custom validation change
+	//if (e.target[0].value.trim() <= 0)
+	//	return;
+
         setSubmitting(true);
         fetch('/items', {
             method: 'POST',
@@ -88,7 +93,7 @@ function AddItemForm({ onNewItem }) {
                 setNewItem('');
             });
     };
-
+	
     return (
         <Form onSubmit={submitNewItem}>
             <InputGroup className="mb-3">
@@ -106,7 +111,7 @@ function AddItemForm({ onNewItem }) {
                         disabled={!newItem.length}
                         className={submitting ? 'disabled' : ''}
                     >
-                        {submitting ? 'Adding...' : 'Add Item'}
+                        {submitting ? 'Adding...' : 'Add New Item'}
                     </Button>
                 </InputGroup.Append>
             </InputGroup>
@@ -168,7 +173,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         onClick={removeItem}
                         aria-label="Remove Item"
                     >
-                        <i className="fa fa-trash text-danger" />
+                        <i className="fa fa-xmark text-danger" />
                     </Button>
                 </Col>
             </Row>
