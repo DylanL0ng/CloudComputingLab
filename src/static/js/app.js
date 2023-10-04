@@ -75,10 +75,11 @@ function AddItemForm({ onNewItem }) {
 
     const submitNewItem = e => {
         e.preventDefault();
-	
-	// Custom validation change
-	//if (e.target[0].value.trim() <= 0)
-	//	return;
+
+	//console.log(e.target[0].value);
+	// custom validation change
+	if (e.target[0].value.trim().length <= 0)
+		return;
 
         setSubmitting(true);
         fetch('/items', {
@@ -101,7 +102,7 @@ function AddItemForm({ onNewItem }) {
                     value={newItem}
                     onChange={e => setNewItem(e.target.value)}
                     type="text"
-                    placeholder="New Item"
+                    placeholder="Enter New Item"
                     aria-describedby="basic-addon1"
                 />
                 <InputGroup.Append>
