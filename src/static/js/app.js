@@ -1,7 +1,7 @@
 function App() {
     const { Container, Row, Col } = ReactBootstrap;
     return (
-        <Container>
+        <Container> 
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
                     <TodoListCard />
@@ -52,9 +52,12 @@ function TodoListCard() {
     return (
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
+		<div className="scroller">
+
             {items.length === 0 && (
                 <p className="text-center">You have no todo items yet! Add one above!</p>
             )}
+
             {items.map(item => (
                 <ItemDisplay
                     item={item}
@@ -63,6 +66,7 @@ function TodoListCard() {
                     onItemRemoval={onItemRemoval}
                 />
             ))}
+	</div>
         </React.Fragment>
     );
 }
@@ -79,7 +83,7 @@ function AddItemForm({ onNewItem }) {
 	//console.log(e.target[0].value);
 	// custom validation change
 	if (e.target[0].value.trim().length <= 0)
-		return;
+		return toast('Testing');
 
         setSubmitting(true);
         fetch('/items', {
@@ -143,7 +147,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
     };
 
     return (
-        <Container fluid className={`item ${item.completed && 'completed'}`}>
+       <Container fluid className={`item ${item.completed && 'completed'}`}>
             <Row>
                 <Col xs={1} className="text-center">
                     <Button
