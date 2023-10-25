@@ -113,7 +113,7 @@ function AddItemForm({ onNewItem }) {
                     <Button
                         type="submit"
                         variant="success"
-                        disabled={!newItem.length}
+                        disabled={newItem.trim().length == 0}
                         className={submitting ? 'disabled' : ''}
                     >
                         {submitting ? 'Adding...' : 'Add New Item'}
