@@ -43,13 +43,6 @@ button:focus {
 	max-height: 80vh;
 }
 
-.container {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
-
 .video-responsive {
     overflow: hidden;
     padding-bottom: 56.25%;
