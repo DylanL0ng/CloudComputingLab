@@ -113,8 +113,9 @@ function AddItemForm({ onNewItem }) {
                     <Button
                         type="submit"
                         variant="success"
-                        disabled={newItem.trim().length == 0}
-                        className={submitting ? 'disabled' : ''}
+                        //disabled={newItem.trim().length == 0}
+                        disabled={true}
+			className={submitting ? 'disabled' : ''}
                     >
                         {submitting ? 'Adding...' : 'Add New Item'}
                     </Button>
@@ -155,6 +156,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         size="sm"
                         variant="link"
                         onClick={toggleCompletion}
+			disabled={true}
                         aria-label={
                             item.completed
                                 ? 'Mark item as incomplete'
@@ -176,6 +178,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         size="sm"
                         variant="link"
                         onClick={removeItem}
+			disabled={true}
                         aria-label="Remove Item"
                     >
                         <i className="fa fa-xmark text-danger" />
